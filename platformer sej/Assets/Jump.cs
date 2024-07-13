@@ -4,24 +4,21 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
-    
-    private Rigidbody rigidbody;
-    public Transform orientation;
-    public float speed = 1.5f;
-    
-    
+    public Vector3 jump;
+    public float jumpForce = 1.5f;
+    public Rigidbody rb;
+    public bool Grounded;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
+        jump = new Vector3(0, 2.0f, 0);
     }
 
     // Update is called once per frame
     void Update()
     
     {
-        Vector3 move = rigidbody.velocity;
-        move.y = 0;
-        move = move + Input.GetAxisRaw("Horizontal") * orientation.up * speed;
+       
     }
 }
