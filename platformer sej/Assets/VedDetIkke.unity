@@ -365,6 +365,7 @@ GameObject:
   - component: {fileID: 339649568}
   - component: {fileID: 339649573}
   - component: {fileID: 339649574}
+  - component: {fileID: 339649575}
   m_Layer: 0
   m_Name: player better
   m_TagString: Untagged
@@ -386,6 +387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCam: {fileID: 516825027}
   orientation: {fileID: 476324982}
+  sensitivity: 800
 --- !u!136 &339649569
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -516,6 +518,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: {fileID: 476324982}
   speed: 10
+--- !u!114 &339649575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339649567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56acb40c348752348be39d92f63f8114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: {x: 0, y: 0, z: 0}
+  jumpForce: 1.5
+  rb: {fileID: 0}
+  Grounded: 0
 --- !u!1 &370064314 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 141c2c2128cc16a499b4de949104f6b2,
