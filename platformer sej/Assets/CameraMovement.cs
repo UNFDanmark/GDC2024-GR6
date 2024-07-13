@@ -10,7 +10,7 @@ public class CameraMovement : MonoBehaviour
     //Rotation and look     
     private float xRotation;
     public float sensitivity = 600f;
-    
+     
     private float desiredX;
 
     private void FixedUpdate()
