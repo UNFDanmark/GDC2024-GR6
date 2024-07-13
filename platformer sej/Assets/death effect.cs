@@ -13,6 +13,6 @@ public class deatheffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //test
+        
     }
 }
