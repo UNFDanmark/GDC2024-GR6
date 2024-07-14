@@ -27,6 +27,7 @@ public class PlayerMover : MonoBehaviour
         move.z = 0;
         move = move + Input.GetAxisRaw("Horizontal") * orientation.right * speed;
         move = move + Input.GetAxisRaw("Vertical") * orientation.forward * speed;
+        
         rigidbody.velocity = move;
     }  
 }  
