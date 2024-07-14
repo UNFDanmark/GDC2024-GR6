@@ -9,11 +9,11 @@ public class CameraMovement : MonoBehaviour
 
     //Rotation and look     
     private float xRotation;
-    public float sensitivity = 600f;
+    public float sensitivity = 100f;
      
     private float desiredX;
 
-    private void FixedUpdate()
+    private void Update()
     {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime;
