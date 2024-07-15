@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CameraMovement : MonoBehaviour 
 {
@@ -10,11 +12,21 @@ public class CameraMovement : MonoBehaviour
     //Rotation and look     
     private float xRotation;
     public float sensitivity = 100f;
-     
+    public float normalPosition;
+    public float crouchPosition;
     private float desiredX;
 
-    private void Update()
+    private void Start()
     {
+        normalPosition = transform.localPosition.y-0.1f;
+        crouchPosition = transform.localPosition.y - 0.5f;
+    }
+
+    private void Update()
+    { 
+        normalPosition = transform.localPosition.y-0.1f;
+        crouchPosition = transform.localPosition.y - 0.5f;
+        
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime;
 
@@ -32,7 +44,11 @@ public class CameraMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            playerCam.position = new Vector3(playerCam.position.x,playerCam.position.y-0.5f, playerCam.position.z);
+            playerCam.position = new Vector3(playerCam.position.x,crouchPosition, playerCam.position.z);
+            print("camera position " + playerCam.position.y);
+        }else
+        {
+            playerCam.transform.position = new Vector3(transform.position.x, normalPosition, transform.position.z);
         }
     }
 }
