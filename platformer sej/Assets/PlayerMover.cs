@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Jobs;
+using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 
 public class PlayerMover : MonoBehaviour
@@ -45,7 +46,16 @@ public class PlayerMover : MonoBehaviour
             cooldownLeft = cooldown;
 
         }
-    }  
+        
+    }
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("water"))
+        {
+            SceneManager.LoadScene("test1");
+        }
+    }
 }
+
 
 
