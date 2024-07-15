@@ -13,6 +13,8 @@ public class PlayerMover : MonoBehaviour
     public float speed;
     public float basespeed = 2;
     public Transform orientation;
+    public float cooldown = 0.2f;
+    float cooldownLeft;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +37,13 @@ public class PlayerMover : MonoBehaviour
         rigidbody.AddForce(move);
         move = Vector3.ClampMagnitude(move, maxspeed);
 
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        cooldownLeft = cooldownLeft - Time.deltaTime;
+        if(Input.GetKeyDown(KeyCode.LeftShift)&& cooldownLeft <= 0)
+        
         {
-            rigidbody.AddForce(move*700);
+            rigidbody.AddForce(move*250);
+            cooldownLeft = cooldown;
+
         }
     }  
 }
