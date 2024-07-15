@@ -29,5 +29,10 @@ public class CameraMovement : MonoBehaviour
         //Perform the rotations
         playerCam.transform.localRotation = Quaternion.Euler(xRotation, desiredX, 0);
         orientation.transform.localRotation = Quaternion.Euler(0, desiredX, 0);
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            playerCam.position = new Vector3(playerCam.position.x,playerCam.position.y-0.5f, playerCam.position.z);
+        }
     }
 }

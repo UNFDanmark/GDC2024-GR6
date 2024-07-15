@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,16 +9,19 @@ public class PlayerMover : MonoBehaviour
 {
 	private Rigidbody rigidbody;
     private Camera mainCam;
-    public float maxspeed = 10;
+    public float maxspeed = 1000000f;
+    public float speed;
+    public float basespeed = 2;
     public Transform orientation;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         mainCam = Camera.main;
+        speed = basespeed;
     }
 
-    public float speed = 1.5f;
+   
 
     public Collider CrouchCollider;
     // Update is called once per frame
@@ -30,7 +34,11 @@ public class PlayerMover : MonoBehaviour
         move = move + Input.GetAxisRaw("Vertical") * orientation.forward * speed;
         rigidbody.AddForce(move);
         move = Vector3.ClampMagnitude(move, maxspeed);
-        
+
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            rigidbody.AddForce(move*700);
+        }
     }  
 }
 
