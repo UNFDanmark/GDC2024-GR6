@@ -8,7 +8,7 @@ public class PlayerMover : MonoBehaviour
 {
 	private Rigidbody rigidbody;
     private Camera mainCam;
-
+    public float maxspeed = 10;
     public Transform orientation;
     // Start is called before the first frame update
     void Start()
@@ -19,16 +19,19 @@ public class PlayerMover : MonoBehaviour
 
     public float speed = 1.5f;
 
+    public Collider CrouchCollider;
     // Update is called once per frame
     void Update()
     {
-        Vector3 move = rigidbody.velocity;
-        move.x = 0;
-        move.z = 0;
+        
+        Vector3 move = new Vector3();
+        float gravity = rigidbody.velocity.y;
         move = move + Input.GetAxisRaw("Horizontal") * orientation.right * speed;
         move = move + Input.GetAxisRaw("Vertical") * orientation.forward * speed;
+        rigidbody.AddForce(move);
+        move = Vector3.ClampMagnitude(move, maxspeed);
         
-        rigidbody.velocity = move;
     }  
-}  
-    
+}
+
+
