@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 3998462262902078499}
   m_Layer: 6
   m_Name: player better
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -470,6 +470,8 @@ MonoBehaviour:
   audioSource: {fileID: 3998462262902078499}
   grounded: 0
   runsound: {fileID: 8300000, guid: efb816864e5caed4db6ea0990ca83434, type: 3}
+  slidesound: {fileID: 0}
+  slidestop: {fileID: 0}
   CrouchCollider: {fileID: 0}
 --- !u!114 &551582356598877802
 MonoBehaviour:
@@ -488,6 +490,7 @@ MonoBehaviour:
   rb: {fileID: 1661156058802910233}
   grounded: 0
   jumpsound: {fileID: 8300000, guid: db3eb88143314ed4ca03050193b5ea9e, type: 3}
+  jumpland: {fileID: 0}
 --- !u!65 &6219187530156565671
 BoxCollider:
   m_ObjectHideFlags: 0
