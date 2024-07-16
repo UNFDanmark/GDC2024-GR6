@@ -462,9 +462,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac35c6308a9a23468ae292a22df7b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxspeed: 1000
-  speed: 10
-  basespeed: 4
+  maxspeed: 25
+  speed: 3.5
+  basespeed: 3
   orientation: {fileID: 6100607654989693939}
   cooldown: 1
   audioSource: {fileID: 3998462262902078499}
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jump: {x: 0, y: 10, z: 0}
-  jumpForce: 8
+  jumpForce: 10
   rb: {fileID: 1661156058802910233}
   grounded: 0
   jumpsound: {fileID: 8300000, guid: db3eb88143314ed4ca03050193b5ea9e, type: 3}
