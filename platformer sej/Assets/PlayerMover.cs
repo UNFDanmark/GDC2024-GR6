@@ -20,6 +20,8 @@ public class PlayerMover : MonoBehaviour
     public bool grounded;
     public AudioClip runsound;
     private bool running;
+    public AudioClip slidesound;
+    public AudioClip slidestop;
     
     // Start is called before the first frame update
     void Start()
@@ -85,19 +87,28 @@ public class PlayerMover : MonoBehaviour
         cooldownLeft = cooldownLeft - Time.deltaTime;
         if(Input.GetKeyDown(KeyCode.LeftShift)&& cooldownLeft <= 0)
         {
-            rigidbody.AddForce(move*150);
+            audioSource.Stop();
+            rigidbody.AddForce(move*250);
             cooldownLeft = cooldown;
+            audioSource.clip = slidesound;
+            audioSource.Play();
             
 
-        }
 
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            audioSource.Stop();
+            audioSource.clip = slidestop;
+            audioSource.Play();
+        }
         running = move != Vector3.zero && grounded;
     }
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("water"))
         {
-            SceneManager.LoadScene("Main Scene");
+            SceneManager.LoadScene("test1");
         }
     }
 }
