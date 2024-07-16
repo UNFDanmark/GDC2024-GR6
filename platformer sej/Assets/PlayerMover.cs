@@ -18,22 +18,30 @@ public class PlayerMover : MonoBehaviour
     float cooldownLeft;
     public AudioSource audioSource;
     public bool grounded;
+    public AudioClip runsound;
+    private bool running;
+    
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         mainCam = Camera.main;
         speed = basespeed;
-        
     }
 
     private void OnTriggerEnter(Collider other){
         if (other.gameObject.CompareTag("ground"))
-    {
-        grounded = true;
-            
-    }
+        {
+            grounded = true;
         }
+    }
+    
+    private void OnTriggerExit(Collider other){
+        if (other.gameObject.CompareTag("ground"))
+        {
+            grounded = false;
+        }
+    }
 
     public Collider CrouchCollider;
     // Update is called once per frame
@@ -46,28 +54,44 @@ public class PlayerMover : MonoBehaviour
         move = move + Input.GetAxisRaw("Vertical") * orientation.forward * speed;
         rigidbody.AddForce(move);
         move = Vector3.ClampMagnitude(move, maxspeed);
-        print(move);
+        //print(move);
        
+        
         if (move == Vector3.zero && grounded)
         {
+            //standing still on the ground
+            
             print("move");
-            audioSource.Play();
-        }else if (move != Vector3.zero && !grounded)
+            audioSource.Stop();
+            
+        } else if (move != Vector3.zero && grounded)
         {
+            // move on the ground 
+            if (!running)
+            {
+                audioSource.clip = runsound;
+                audioSource.Play();
+            }
+            
+        }
+        else if (!grounded)
+        {
+            Debug.Log("STOP");
+            // in mid-air
             audioSource.Stop();
         }
-
+        
 
         cooldownLeft = cooldownLeft - Time.deltaTime;
         if(Input.GetKeyDown(KeyCode.LeftShift)&& cooldownLeft <= 0)
-        
         {
             rigidbody.AddForce(move*250);
             cooldownLeft = cooldown;
             
 
         }
-        
+
+        running = move != Vector3.zero && grounded;
     }
     void OnCollisionEnter(Collision other)
     {

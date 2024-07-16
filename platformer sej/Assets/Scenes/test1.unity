@@ -1585,6 +1585,7 @@ MonoBehaviour:
   cooldown: 0.2
   audioSource: {fileID: 0}
   grounded: 0
+  runsound: {fileID: 0}
   CrouchCollider: {fileID: 0}
 --- !u!1 &1051904212 stripped
 GameObject:
@@ -2918,7 +2919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16052b2d8657b843851af83dcedca76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterspeed: 0
+  waterspeed: 0.01
 --- !u!1 &1639153295 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1339013814460241477, guid: e344aedec7e2e61469529437a3c2cf91,
