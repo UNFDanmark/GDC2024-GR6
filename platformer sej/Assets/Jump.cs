@@ -11,6 +11,8 @@ public class Jump : MonoBehaviour
     public float jumpForce = 1.5f;
     public Rigidbody rb;
     public bool grounded;
+
+    public AudioClip jumpsound;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,13 +29,8 @@ public class Jump : MonoBehaviour
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
         
             grounded = false;
-            
-            
-            
-            {
-                audioSource.Play();
-            }
-
+            //audioSource.clip = jumpsound;
+            AudioSource.PlayClipAtPoint(jumpsound, transform.position, 1f);
         }
     }
 
