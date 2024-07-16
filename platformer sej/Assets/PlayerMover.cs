@@ -16,15 +16,24 @@ public class PlayerMover : MonoBehaviour
     public Transform orientation;
     public float cooldown = 0.2f;
     float cooldownLeft;
+    public AudioSource audioSource;
+    public bool grounded;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         mainCam = Camera.main;
         speed = basespeed;
+        
     }
 
-   
+    private void OnTriggerEnter(Collider other){
+        if (other.gameObject.CompareTag("ground"))
+    {
+        grounded = true;
+            
+    }
+        }
 
     public Collider CrouchCollider;
     // Update is called once per frame
@@ -37,6 +46,17 @@ public class PlayerMover : MonoBehaviour
         move = move + Input.GetAxisRaw("Vertical") * orientation.forward * speed;
         rigidbody.AddForce(move);
         move = Vector3.ClampMagnitude(move, maxspeed);
+        print(move);
+       
+        if (move == Vector3.zero && grounded)
+        {
+            print("move");
+            audioSource.Play();
+        }else if (move != Vector3.zero && !grounded)
+        {
+            audioSource.Stop();
+        }
+
 
         cooldownLeft = cooldownLeft - Time.deltaTime;
         if(Input.GetKeyDown(KeyCode.LeftShift)&& cooldownLeft <= 0)
@@ -44,6 +64,7 @@ public class PlayerMover : MonoBehaviour
         {
             rigidbody.AddForce(move*250);
             cooldownLeft = cooldown;
+            
 
         }
         

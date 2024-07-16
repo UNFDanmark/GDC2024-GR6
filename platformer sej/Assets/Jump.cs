@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))] 
 public class Jump : MonoBehaviour
+
 {
+    AudioSource audioSource;
     public Vector3 jump;
     public float jumpForce = 1.5f;
     public Rigidbody rb;
@@ -12,6 +14,7 @@ public class Jump : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0, 2.0f, 0);
     }
@@ -24,6 +27,13 @@ public class Jump : MonoBehaviour
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
         
             grounded = false;
+            
+            
+            
+            {
+                audioSource.Play();
+            }
+
         }
     }
 
