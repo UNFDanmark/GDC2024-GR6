@@ -85,7 +85,7 @@ public class PlayerMover : MonoBehaviour
         cooldownLeft = cooldownLeft - Time.deltaTime;
         if(Input.GetKeyDown(KeyCode.LeftShift)&& cooldownLeft <= 0)
         {
-            rigidbody.AddForce(move*250);
+            rigidbody.AddForce(move*150);
             cooldownLeft = cooldown;
             
 
