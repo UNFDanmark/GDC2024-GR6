@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jump: {x: 0, y: 10, z: 0}
-  jumpForce: 5
+  jumpForce: 8
   rb: {fileID: 1661156058802910233}
   grounded: 0
   jumpsound: {fileID: 8300000, guid: db3eb88143314ed4ca03050193b5ea9e, type: 3}
