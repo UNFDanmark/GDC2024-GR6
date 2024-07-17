@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaterMover : MonoBehaviour
 {
-    public float waterspeed = 0.001f;
+    public float waterspeed = 0.01f;
     
     // Start is called before the first frame update
     void Start()
@@ -13,7 +13,7 @@ public class WaterMover : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.position = new Vector3(transform.position.x,transform.position.y+waterspeed, transform.position.z);
     }
