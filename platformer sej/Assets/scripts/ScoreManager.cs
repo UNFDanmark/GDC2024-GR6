@@ -31,7 +31,7 @@ public class ScoreManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.P))
         {
-            SceneManager.LoadScene("test1");
+            SceneManager.LoadScene("Main Scene");
         }
     }
 

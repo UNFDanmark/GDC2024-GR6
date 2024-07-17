@@ -108,7 +108,7 @@ public class PlayerMover : MonoBehaviour
     {
         if (other.gameObject.CompareTag("water"))
         {
-            SceneManager.LoadScene("test1");
+            SceneManager.LoadScene("Main Scene");
         }
     }
 }
