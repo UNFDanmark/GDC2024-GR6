@@ -8,6 +8,6 @@ public class start : MonoBehaviour
     
     public void startbutton()
     {
-        SceneManager.LoadScene("test1");
+        SceneManager.LoadScene("Main Scene");
     }
 }
