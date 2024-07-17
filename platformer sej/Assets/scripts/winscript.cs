@@ -36,6 +36,7 @@ public class winscript : MonoBehaviour
         {
             GameObject varGameObject = GameObject.FindWithTag("Player");
             varGameObject.GetComponent<PlayerMover>().enabled = false;
+            varGameObject.GetComponent<Jump>().enabled = false;
             winscreen.SetActive(true);
             timercanvas.SetActive(false);
             ScoreManager.instance.UpdateHighscore(score.elapsedTime);

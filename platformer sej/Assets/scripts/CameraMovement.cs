@@ -50,5 +50,7 @@ public class CameraMovement : MonoBehaviour
         {
             playerCam.transform.position = new Vector3(transform.position.x, normalPosition, transform.position.z);
         }
+        
     }
+    
 }
