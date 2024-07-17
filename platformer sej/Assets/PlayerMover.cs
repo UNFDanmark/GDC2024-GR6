@@ -88,7 +88,7 @@ public class PlayerMover : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftShift)&& cooldownLeft <= 0)
         {
             audioSource.Stop();
-            rigidbody.AddForce(move*250);
+            rigidbody.AddForce(move*100);
             cooldownLeft = cooldown;
             audioSource.clip = slidesound;
             audioSource.Play();
