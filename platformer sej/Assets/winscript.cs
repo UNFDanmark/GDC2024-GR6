@@ -26,7 +26,8 @@ public class winscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-  
+       
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,11 +40,18 @@ public class winscript : MonoBehaviour
             timercanvas.SetActive(false);
             ScoreManager.instance.UpdateHighscore(score.elapsedTime);
             highscoretext.text = "" + ScoreManager.instance.highscore;
-            scoretext.text = "" + score.elapsedTime;
+            //scoretext.text = "" + score.elapsedTime.ToString("0.000");
             
                 GameObject water = GameObject.FindWithTag("water");
                 water.GetComponent<WaterMover>().waterspeed = 0f;
-            
+                
+                
+                int minutes = Mathf.FloorToInt(score.elapsedTime / 60);
+                float seconds = (score.elapsedTime % 60);
+                int highscoreminutes = Mathf.FloorToInt(ScoreManager.instance.highscore / 60);
+                float highscoreseconds = (ScoreManager.instance.highscore % 60);
+                highscoretext.text = string.Format("{0:00}:{1:0.000}", highscoreminutes, highscoreseconds);
+                scoretext.text = string.Format("{0:00}:{1:0.000}", minutes, seconds);
         }
     }
 }
