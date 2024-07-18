@@ -1,18 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Jobs;
 using UnityEngine.SceneManagement;
-using UnityEngine.TextCore.Text;
 
 public class PlayerMover : MonoBehaviour
 {
 	private Rigidbody rigidbody;
     private Camera mainCam;
     public float maxspeed = 1000000f;
-    public float speed;
     public float basespeed = 2;
     public Transform orientation;
     public float cooldown = 0.2f;
@@ -23,14 +16,13 @@ public class PlayerMover : MonoBehaviour
     private bool running;
     public AudioClip slidesound;
     public AudioClip slidestop;
-   
-    
+
+    private Vector3 move;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         mainCam = Camera.main;
-        speed = basespeed;
     }
 
     private void OnTriggerEnter(Collider other){
@@ -52,11 +44,11 @@ public class PlayerMover : MonoBehaviour
     void Update()
     {
         
-        Vector3 move = new Vector3();
-        float gravity = rigidbody.velocity.y;
-        move = move + Input.GetAxisRaw("Horizontal") * orientation.right * speed;
-        move = move + Input.GetAxisRaw("Vertical") * orientation.forward * speed;
-        rigidbody.AddForce(move);
+        move = new Vector3();
+        
+        move = move + Input.GetAxisRaw("Horizontal") * orientation.right * basespeed;
+        move = move + Input.GetAxisRaw("Vertical") * orientation.forward * basespeed;
+        
         move = Vector3.ClampMagnitude(move, maxspeed);
         //print(move);
        
@@ -80,7 +72,6 @@ public class PlayerMover : MonoBehaviour
         }
         else if (!grounded)
         {
-            Debug.Log("STOP");
             // in mid-air
             audioSource.Stop();
         }
@@ -106,6 +97,12 @@ public class PlayerMover : MonoBehaviour
         }
         running = move != Vector3.zero && grounded;
         
+    }
+
+    private void FixedUpdate()
+    {
+        float gravity = rigidbody.velocity.y;
+        rigidbody.AddForce(move,ForceMode.Acceleration);
     }
     void OnCollisionEnter(Collision other)
     {
